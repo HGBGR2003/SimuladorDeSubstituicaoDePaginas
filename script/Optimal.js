@@ -47,7 +47,7 @@ function optimal(pages, nFrames) {
             farthest = next;
             victimIdx = j
           }
-        }[]
+        }
 
         const replaced = frames[victimIdx];
         const nextUse = pages.indexOf(replaced, i + 1)
@@ -55,7 +55,7 @@ function optimal(pages, nFrames) {
         const explain =
           nextUse === -1
             ? `OPT: ${replaced} nunca mais será usada → vítima ideal.`
-            : `OPT: ${replaced} será usada na posição ${nextUse + 1} (mais distante) → substituída.`;
+            : `OPT: ${replaced} será usada na posição ${nextUse + 1} (mais distante) → substituída.`
         
             frames[victimIdx] = page
 

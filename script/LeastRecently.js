@@ -8,14 +8,15 @@ function leastRecently (pages, nFrames) {
         const page = pages[i]
 
         if (frames.includes(page)) {
-            hits++;
+            hits++
             const idx = frames.indexOf(page);
             frames.splice(idx, 1)
             frames.push(page)
             steps.push({
                 page, frames: [...frames], hit: true, replaced: null,
                 explain: `Página ${page} encontrada. Movida para posição mais recente. → HIT`
-            });
+            })
+            
         } else {
             faults++
             if (frames.length < nFrames) {

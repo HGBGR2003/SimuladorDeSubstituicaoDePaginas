@@ -12,8 +12,8 @@ function clock(pages, nFrames) {
     const idx = frames.indexOf(page);
 
     if (idx !== -1) {
-      hits++;
-      ref[idx] = 1;
+      hits++
+      ref[idx] = 1
       steps.push({
         page,
         frames: [...frames],
@@ -55,11 +55,11 @@ function clock(pages, nFrames) {
 
         } else {
           scanLog.push(`Q${hand + 1}: bit 1→0`);
-          ref[hand] = 0;
+          ref[hand] = 0
           hand = (hand + 1) % nFrames;
         }
       }
     }
   }
-  return { steps, hits, faults, name: "Clock" };
+  return { steps, hits, faults, name: "Clock" }
 }

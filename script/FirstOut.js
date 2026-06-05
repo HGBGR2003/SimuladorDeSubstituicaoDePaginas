@@ -8,7 +8,7 @@ function fifo(pages, nFrames) {
     const page = pages[i]
 
     if (frames.includes(page)) {
-      hits++;
+      hits++
       steps.push({
         page,
         frames: [...frames],
@@ -44,5 +44,5 @@ function fifo(pages, nFrames) {
       }
     }
   }
-  return { steps, hits, faults, name: "FIFO" };
+  return { steps, hits, faults, name: "FIFO" }
 }
