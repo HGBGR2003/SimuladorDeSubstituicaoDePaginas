@@ -1,4 +1,3 @@
-// ── ESTADO GLOBAL ─────────────────────────────────────────────────────────────
 const ALGOS = ['fifo', 'lru', 'opt', 'clock']
 const NAMES = { fifo: 'FIFO', lru: 'LRU', opt: 'OPT', clock: 'Clock' }
 
@@ -9,7 +8,6 @@ let totalSteps  = 0
 let pages       = []
 let nFrames     = 3
 
-// ── INICIALIZAÇÃO ─────────────────────────────────────────────────────────────
 function init() {
   const str = document.getElementById('refStr').value.trim()
   nFrames   = parseInt(document.getElementById('nFrames').value) || 3
@@ -33,7 +31,6 @@ function loadExample() {
   init()
 }
 
-// ── ABAS ──────────────────────────────────────────────────────────────────────
 function buildTabs() {
   const nav = document.getElementById('algoTabs')
   nav.innerHTML = ''
@@ -62,7 +59,6 @@ function buildTabs() {
   nav.appendChild(list)
 }
 
-// ── SELEÇÃO DE ALGORITMO ──────────────────────────────────────────────────────
 function setAlgo(a) {
   currentAlgo = a
   currentStep = 0
@@ -80,7 +76,6 @@ function setAlgo(a) {
   render()
 }
 
-// ── NAVEGAÇÃO ─────────────────────────────────────────────────────────────────
 function goStep(n) {
   currentStep = Math.max(0, Math.min(totalSteps - 1, n))
   render()
