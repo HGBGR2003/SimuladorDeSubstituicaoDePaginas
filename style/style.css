@@ -187,6 +187,18 @@ section.step-nav:not([hidden]) {
 .nav-btn:hover:not(:disabled) { background: var(--surface2); }
 .nav-btn:disabled { opacity: 0.3; cursor: default; }
 
+.nav-btn--play {
+  background: var(--text);
+  color: var(--surface);
+  border-color: transparent;
+  font-size: 0.75rem;
+}
+
+.nav-btn--play:hover:not(:disabled) {
+  opacity: 0.85;
+  background: var(--text);
+}
+
 .progress-bar {
   flex: 1;
   height: 5px;

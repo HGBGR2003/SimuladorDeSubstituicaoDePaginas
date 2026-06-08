@@ -6,9 +6,11 @@ let currentAlgo = 'fifo'
 let currentStep = 0
 let totalSteps  = 0
 let pages       = []
-let nFrames     = 3
+let nFrames     = 4
+let playInterval = null
 
-function init() {
+function 
+init() {
   const str = document.getElementById('refStr').value.trim()
   nFrames   = parseInt(document.getElementById('nFrames').value) || 3
   pages     = str.split(/\s+/).map(Number).filter(n => !isNaN(n))
@@ -26,9 +28,10 @@ function init() {
 }
 
 function loadExample() {
-  document.getElementById('refStr').value  = '7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1'
-  document.getElementById('nFrames').value = '3'
-  init()
+  document.getElementById('refStr').value  = '7 0 1 2 0 3 0 4 2 3'
+  document.getElementById('nFrames').value = '4'
+  
+init()
 }
 
 function buildTabs() {
@@ -72,13 +75,42 @@ function setAlgo(a) {
     b.setAttribute('aria-selected', String(isActive))
   })
 
+  stopPlay()
   document.getElementById('stepNav').removeAttribute('hidden')
   render()
 }
 
 function goStep(n) {
+  stopPlay()
   currentStep = Math.max(0, Math.min(totalSteps - 1, n))
   render()
 }
 
 init()
+
+function togglePlay() {
+  if (playInterval) {
+    stopPlay()
+  } else {
+    const btn = document.getElementById('btnPlay')
+    btn.textContent = '⏸'
+    btn.setAttribute('aria-label', 'Pausar reprodução')
+    playInterval = setInterval(() => {
+      if (currentStep >= totalSteps - 1) {
+        stopPlay()
+        return
+      }
+      goStep(currentStep + 1)
+    }, 800)
+  }
+}
+
+function stopPlay() {
+  clearInterval(playInterval)
+  playInterval = null
+  const btn = document.getElementById('btnPlay')
+  if (btn) {
+    btn.textContent = '▶'
+    btn.setAttribute('aria-label', 'Reproduzir automaticamente')
+  }
+}
